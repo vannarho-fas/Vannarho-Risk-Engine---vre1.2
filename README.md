@@ -1,25 +1,18 @@
-# ORE
+# VRE
 
-The [Open Source Risk](http://opensourcerisk.org) project aims at
-establishing a transparent peer-reviewed framework for pricing and risk
-analysis that can serve as
-* a benchmarking, validation, training, teaching reference 
-* an extensible foundation for tailored risk solutions
+The Vannarho Risk Engine (VRE) is transparent peer-reviewed framework for pricing and risk
+analysis that is an extensible foundation for tailored risk solutions
 
-Open Source Risk Engine (ORE) provides
-* contemporary risk analytics and value adjustments (XVAs) 
-* interfaces for trade/market data and system configuration (API and XML)
-* simple application launchers in Excel, LibreOffice, Python, Jupyter
+VRE provides
+* contemporary risk analytics and value adjustments 
 * various examples that demonstrate typical use cases
 * comprehensive test suites
 
-ORE is based on [QuantLib](http://quantlib.org), the open source library
+VRE is based on [QuantLib](http://quantlib.org), the open source library
 for quantitative finance, and it extends QuantLib in terms of simulation models, financial
 instruments and pricing engines.
 
-ORE is sponsored by [Acadia Inc](http://acadia.inc) as part of the firm's commitment
-to transparency in pricing methods and risk analytics applied in the industry.
-ORE is free/open software, provided under the Modified BSD License, which permits
+VRE is free/open software, provided under the Modified BSD License, which permits
 using and modifying the code base as well as incorporating it into commercial applications.
 
 ## Documentation
@@ -33,15 +26,15 @@ A detailed User Guide is provided that covers
 
 ## API Reference
 
-The source code is documented in doxygen, the API reference is
-available on the [OpenSourceRisk](http://opensourcerisk.org) project site.
+The source code is documented in doxygen.
 
 ## License
 
-Open Source Risk Engine (ORE) is
+VRE
 
-Copyright (C) 2016-2021 Quaternion Risk Management Ltd.<br/>
-Copyright (C) 2021-2023 Acadia Inc.<br/>
+Copyright (C) 2016-2020 Quaternion Risk Management Ltd.
+Copyright (C) 2021 Acadia Inc.
+Copyright (C) 2024 Growth Mindset Pty Ltd trading as Vannarho
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

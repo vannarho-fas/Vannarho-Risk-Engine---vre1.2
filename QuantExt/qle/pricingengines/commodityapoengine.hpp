@@ -2,13 +2,13 @@
  Copyright (C) 2019 Quaternion Risk Management Ltd
  All rights reserved.
 
- This file is part of ORE, a free-software/open-source library
- for transparent pricing and risk analysis - http://opensourcerisk.org
+ This file is part of VRE, a free-software/open-source library
+ for transparent pricing and risk analysis
 
- ORE is free software: you can redistribute it and/or modify it
+ VRE is free software: you can redistribute it and/or modify it
  under the terms of the Modified BSD License.  You should have received a
  copy of the license along with this program.
- The license is also available online at <http://opensourcerisk.org>
+
 
  This program is distributed on the basis that it will form a useful
  contribution to risk analytics and model standardisation, but WITHOUT
@@ -59,7 +59,7 @@ struct MomentMatchingResults {
 
 // Matches the first two moments of a lognormal distribution
 // For options with accruals the strike of the options need to be adjusted by the accruals
-// See Iain Clark - Commodity Option Pricing A Practitioner’s Guide - Section 2.74
+// See Iain Clark - Commodity Option Pricing A Practitionerï¿½s Guide - Section 2.74
 MomentMatchingResults matchFirstTwoMomentsTurnbullWakeman(
     const ext::shared_ptr<CommodityIndexedAverageCashFlow>& flow,
     const ext::shared_ptr<QuantLib::BlackVolTermStructure>& vol,

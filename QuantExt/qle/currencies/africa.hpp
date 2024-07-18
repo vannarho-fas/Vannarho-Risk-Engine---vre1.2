@@ -2,13 +2,13 @@
  Copyright (C) 2016 Quaternion Risk Management Ltd
  All rights reserved.
 
- This file is part of ORE, a free-software/open-source library
- for transparent pricing and risk analysis - http://opensourcerisk.org
+ This file is part of VRE, a free-software/open-source library
+ for transparent pricing and risk analysis
 
- ORE is free software: you can redistribute it and/or modify it
+ VRE is free software: you can redistribute it and/or modify it
  under the terms of the Modified BSD License.  You should have received a
  copy of the license along with this program.
- The license is also available online at <http://opensourcerisk.org>
+
 
  This program is distributed on the basis that it will form a useful
  contribution to risk analytics and model standardisation, but WITHOUT
@@ -123,7 +123,7 @@ It is divided into 100 ngwee.
 
 // Angolan kwanza
 /*! The ISO three-letter code is AOA; the numeric code is 973.
- It is divided into 100 cêntimo.
+ It is divided into 100 cï¿½ntimo.
 
  \ingroup currencies
 */
