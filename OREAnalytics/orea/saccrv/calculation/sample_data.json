@@ -1,0 +1,37 @@
+struct TradeInfo {
+    ExposureDetails exposureDetails;
+    SaccrvTrades trades;
+
+    // Constructor
+    TradeInfo(ExposureDetails exp, SaccrvTrades trd)
+        : exposureDetails(exp), trades(trd) {}
+};
+
+struct TimeBucket {
+    double effectiveNotional;
+    std::map<std::string, TradeInfo> tradeData;
+
+    // Constructor
+    TimeBucket(double effNotional)
+        : effectiveNotional(effNotional), tradeData() {}
+};
+
+struct CurrencyData {
+    double addon;
+    double effectiveNotional;
+    double supervisoryFactor;
+    std::vector<TimeBucket> timeBuckets;
+
+    // Constructor
+    CurrencyData(double add, double effNotional, double supFactor)
+        : addon(add), effectiveNotional(effNotional), supervisoryFactor(supFactor), timeBuckets() {}
+};
+
+struct IRD {
+    double addon;
+    std::map<std::string, CurrencyData> currencies;
+
+    // Constructor
+    IRD(double add)
+        : addon(add), currencies() {}
+};

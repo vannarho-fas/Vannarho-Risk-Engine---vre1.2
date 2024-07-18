@@ -53,14 +53,19 @@ public:
         const Period& mpr, const Real& collatSpreadPay, const Real& collatSpreadRcv,
         const vector<string>& eligCollatCcys, // vector of three letter ISO codes
         bool applyInitialMargin, Type initialMarginType, const bool calculateIMAmount, const bool calculateVMAmount,
-        const string& nonExemptIMRegulations)
+        const string& nonExemptIMRegulations,
+        const bool hasIlliquidCollateralOrOTCNotEasilyReplaced, const bool applyMarginCallDisputes, const bool greaterThan5000TransactionsNotCentrallyCleared)
         : type_(type), csaCurrency_(csaCurrency), index_(index), thresholdPay_(thresholdPay),
           thresholdRcv_(thresholdRcv), mtaPay_(mtaPay), mtaRcv_(mtaRcv), iaHeld_(iaHeld), iaType_(iaType),
           marginCallFreq_(marginCallFreq), marginPostFreq_(marginPostFreq), mpr_(mpr),
           collatSpreadPay_(collatSpreadPay), collatSpreadRcv_(collatSpreadRcv), eligCollatCcys_(eligCollatCcys),
           applyInitialMargin_(applyInitialMargin), initialMarginType_(initialMarginType),
           calculateIMAmount_(calculateIMAmount), calculateVMAmount_(calculateVMAmount),
-          nonExemptIMRegulations_(nonExemptIMRegulations) {}
+          nonExemptIMRegulations_(nonExemptIMRegulations),
+          hasIlliquidCollateralOrOTCNotEasilyReplaced_(hasIlliquidCollateralOrOTCNotEasilyReplaced),
+          applyMarginCallDisputes_(applyMarginCallDisputes), 
+          greaterThan5000TransactionsNotCentrallyCleared_(greaterThan5000TransactionsNotCentrallyCleared) {}
+
 
     //! Inspectors
     //@{
@@ -107,6 +112,13 @@ public:
         (currently used only for SA-CCR) */
     const string& nonExemptIMRegulations() { return nonExemptIMRegulations_; } 
     /*! invert all relevant aspects of the CSA */
+
+    // vannarho edit - SACCRV
+    /*! variables used only for SA-CCR maturity factor calculation) */
+    bool hasIlliquidCollateralOrOTCNotEasilyReplaced() { return hasIlliquidCollateralOrOTCNotEasilyReplaced_; }
+    bool applyMarginCallDisputes() { return applyMarginCallDisputes_; }
+    bool greaterThan5000TransactionsNotCentrallyCleared() { return greaterThan5000TransactionsNotCentrallyCleared_; }
+    
     void invertCSA();
 
     void validate();
@@ -131,6 +143,8 @@ private:
     Type initialMarginType_;
     bool calculateIMAmount_, calculateVMAmount_;
     string nonExemptIMRegulations_;
+    // vannarho edit - SACCRV - added 3 additional bool variables to end of constructor
+    bool hasIlliquidCollateralOrOTCNotEasilyReplaced_, applyMarginCallDisputes_, greaterThan5000TransactionsNotCentrallyCleared_;
 };
 
 CSA::Type parseCsaType(const string& s);
@@ -171,7 +185,9 @@ public:
                          const vector<string>& eligCollatCcys, // vector of three letter ISO codes
                          bool applyInitialMargin = false, const string& initialMarginType = "Bilateral",
                          const bool calculateIMAmount = false, const bool calculateVMAmount = false,
-                         const string& nonExemptIMRegulations = "");
+                         const string& nonExemptIMRegulations = "",
+                        // vannarho edit - SACCRV - added 3 additional bool variables to end
+                         const bool hasIlliquidCollateralOrOTCNotEasilyReplaced = false, const bool applyMarginCallDisputes = false, const bool greaterThan5000TransactionsNotCentrallyCleared = false);
 
     NettingSetDefinition(const string& nettingSetId, const string& bilateral,
                          const string& csaCurrency, // three letter ISO code
@@ -184,11 +200,14 @@ public:
                          const vector<string>& eligCollatCcys, // vector of three letter ISO codes
                          bool applyInitialMargin = false, const string& initialMarginType = "Bilateral",
                          const bool calculateIMAmount = false, const bool calculateVMAmount = false,
-                         const string& nonExemptIMRegulations = "")
+                         const string& nonExemptIMRegulations = "",
+                         const bool hasIlliquidCollateralOrOTCNotEasilyReplaced = false, const bool applyMarginCallDisputes = false, const bool greaterThan5000TransactionsNotCentrallyCleared = false)
         : NettingSetDefinition(NettingSetDetails(nettingSetId), bilateral, csaCurrency, index, thresholdPay,
                                thresholdRcv, mtaPay, mtaRcv, iaHeld, iaType, marginCallFreq, marginPostFreq, mpr,
                                collatSpreadPay, collatSpreadRcv, eligCollatCcys, applyInitialMargin, initialMarginType,
-                               calculateIMAmount, calculateVMAmount, nonExemptIMRegulations) {}
+                               calculateIMAmount, calculateVMAmount, nonExemptIMRegulations,
+                                // vannarho edit - SACCRV - added 3 additional bool variables to end
+                               hasIlliquidCollateralOrOTCNotEasilyReplaced, applyMarginCallDisputes, greaterThan5000TransactionsNotCentrallyCleared) {}
 
     /*!
       loads NettingSetDefinition object from XML

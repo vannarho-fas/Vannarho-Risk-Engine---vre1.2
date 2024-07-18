@@ -46,6 +46,9 @@
 #include <ored/utilities/xmlutils.hpp>
 #include <string>
 
+// vannarho edit
+#include <orea/saccrv/saccrvcalculationmanager.hpp>
+
 namespace ore {
 namespace analytics {
 //! Write ORE outputs to reports
@@ -211,6 +214,10 @@ public:
 	const std::string& baseCurrency,
 	const ext::shared_ptr<ore::data::Market>& market, const std::string& configuration,
 	const ext::shared_ptr<Portfolio>& portfolio);
+
+    // saccrv vannarho edit
+    void writeSaccrvReport(ore::data::Report& report, 
+                                     const ore::analytics::CounterpartyCreditRiskExposureTree& data);
 
 protected:
     std::string nullString_;

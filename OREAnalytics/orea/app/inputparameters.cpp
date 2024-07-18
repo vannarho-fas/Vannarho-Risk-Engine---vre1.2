@@ -535,6 +535,56 @@ void InputParameters::setCreditSimulationParametersFromBuffer(const std::string&
     creditSimulationParameters_ = QuantLib::ext::make_shared<CreditSimulationParameters>();
     creditSimulationParameters_->fromXMLString(xml);
 } 
+
+// SACCRV  - vannarho edit
+
+typedef std::map<std::string, SaccrvSupervisoryFactor> FactorMap;
+
+
+void InputParameters::setSaccrvSupervisoryFactorsFromFile(const std::string& fileName) {
+    try {
+        ore::data::CSVFileReader reader(fileName, true);
+        while (reader.next()) {
+            SaccrvSupervisoryFactor factor;
+            factor.supervisory_factor = parseReal(reader.get("Supervisory_factor"));
+            factor.correlation = parseReal(reader.get("Correlation"));
+            factor.supervisory_option_volatility = parseReal(reader.get("Supervisory_option_volatility"));
+            std::string assetClass = reader.get("Asset_Class");
+            std::string subClass = reader.get("SubClass");
+            if (saccrvSupervisoryFactors_.find(assetClass) == saccrvSupervisoryFactors_.end()) {
+                saccrvSupervisoryFactors_[assetClass] = FactorMap();
+            }
+            saccrvSupervisoryFactors_[assetClass][subClass] = factor;
+        }
+        LOG("Loaded SACCRV Supervisory Factors successfully.");
+    } catch (const std::exception& e) {
+        LOG("Error loading SACCRV Supervisory Factors: " + std::string(e.what()));
+    } catch (...) {
+        LOG("Unknown error occurred while loading SACCRV Supervisory Factors.");
+    }
+}
+
+void InputParameters::setSaccrvCollateralFromFile(const std::string& fileName) {
+    try {
+        ore::data::CSVFileReader reader(fileName, true);
+        while (reader.next()) {
+            SaccrvCollateral collateral;
+            collateral.id = reader.get("id");
+            collateral.amount = parseReal(reader.get("amount"));
+            collateral.nettingsetId = reader.get("nettingsetId");
+            collateral.type = reader.get("type");
+            saccrvCollateral_.push_back(collateral);
+        }
+        LOG("Loaded SACCRV Collateral successfully.");
+    } catch (const std::exception& e) {
+        LOG("Error loading SACCRV Collateral: " + std::string(e.what()));
+    } catch (...) {
+        LOG("Unknown error occurred while loading SACCRV Collateral.");
+    }
+}
+
+// SACCRV end 
+
     
 void InputParameters::setCrifFromFile(const std::string& fileName, char eol, char delim, char quoteChar, char escapeChar) {
     bool updateMappings = true;
@@ -593,6 +643,9 @@ void InputParameters::insertAnalytic(const std::string& s) {
     analytics_.insert(s);
 }
 
+
+
+
 OutputParameters::OutputParameters(const QuantLib::ext::shared_ptr<Parameters>& params) {
     LOG("OutputFileNameMap called");
     npvOutputFileName_ = params->get("npv", "outputFileName", false);
@@ -619,6 +672,13 @@ OutputParameters::OutputParameters(const QuantLib::ext::shared_ptr<Parameters>& 
     varFileName_ = params->get("parametricVar", "outputFile", false);
     if (varFileName_.empty())
         varFileName_ = params->get("historicalSimulationVar", "outputFile", false);
+
+
+
+    // SACCRV  - vannarho edit
+    saccrvOutputFileName_ = params->get("saccrv", "saccrvOutputFileName", false);
+    // SACCRV end 
+
     parConversionOutputFileName_ = params->get("zeroToParSensiConversion", "outputFile", false);
     parConversionJacobiFileName_ = params->get("zeroToParSensiConversion", "jacobiOutputFile", false);
     parConversionJacobiInverseFileName_ = params->get("zeroToParSensiConversion", "jacobiInverseOutputFile", false);
@@ -646,6 +706,9 @@ OutputParameters::OutputParameters(const QuantLib::ext::shared_ptr<Parameters>& 
     fileNameMap_["stress_ZeroStressData"] = stressZeroScenarioDataFileName_;
     fileNameMap_["xva_stress"] = xvaStressTestFileName_;
     fileNameMap_["var"] = varFileName_;
+    // SACCRV  - vannarho edit
+    fileNameMap_["saccrv"] = saccrvOutputFileName_;
+    // SACCRV end 
     fileNameMap_["parConversionSensitivity"] = parConversionOutputFileName_;
     fileNameMap_["parConversionJacobi"] = parConversionJacobiFileName_;
     fileNameMap_["parConversionJacobi_inverse"] = parConversionJacobiInverseFileName_;

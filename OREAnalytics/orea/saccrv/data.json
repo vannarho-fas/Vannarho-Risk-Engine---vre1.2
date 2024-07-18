@@ -1,0 +1,447 @@
+{
+  "counterpartyCreditRiskExposureTree": [
+    {
+      "counterpartyId": {
+        "addOn": "numeric_value",
+        "ead": "numeric_value",
+        "pfe": "numeric_value",
+        "replacementCost": {"v_c":"numeric_value","rc":"numeric_value","v":"numeric_value"},
+        "assetClasses": {
+          "ird": {
+            "addon": "numeric_value",
+            "currencies": [
+              {
+                "currency": {
+                  "addon": "numeric_value",
+                  "effectiveNotional": "numeric_value",
+                  "supervisoryFactor": "numeric_value",
+                  "timeBuckets": [
+                    {
+                      "timeBucket": {
+                        "effectiveNotional": "numeric_value",
+                        "tradeData": [
+                          {
+                            "id": {
+                              "exposureDetails": {
+                                "adjNotional": "numeric_value",
+                                "maturityFactor": "numeric_value",
+                                "supervDelta": "numeric_value",
+                                "effectiveNotional": "numeric_value"
+                              },
+                              "trades": {
+                                "id": "id_string",
+                                "tradeType": "instrument_string",
+                                "tradeGroup": "asset_class_string",
+                                "subClass": "subclass_string",
+                                "notional": "optional_double",
+                                "mTm": "optional_double",
+                                "currency": "currency_string",
+                                "Si": "optional_double",
+                                "Ei": "optional_double",
+                                "buySell": "buySell_string",
+                                "counterparty": "counterparty_string",
+                                "optionType": "optionType_string",
+                                "underlyingPrice": "optional_double",
+                                "strikePrice": "optional_double",
+                                "commodityType": "commodityType_string",
+                                "refEntity": "refEntity_string",
+                                "ccyPair": "ccyPair_string",
+                                "payLegType": "payLegType_string",
+                                "payLegRef": "payLegRef_string",
+                                "payLegTenor": "optional_double",
+                                "recLegType": "recLegType_string",
+                                "recLegRef": "recLegRef_string",
+                                "recLegTenor": "optional_double",
+                                "volStrike": "optional_double",
+                                "tradedPrice": "optional_double",
+                                "deliveryType": "deliveryType_string",
+                                "underlyingInstrument": "underlyingInstrument_string",
+                                "exoticType": "exoticType_string",
+                                "ISIN": "ISIN_string",
+                                "couponType": "couponType_string",
+                                "issuer": "issuer_string",
+                                "maturityDate": "optional_double",
+                                "paymentFrequency": "paymentFrequency_string",
+                                "creditRiskWeight": "creditRiskWeight_string",
+                                "cdoAttachPoint": "cdoAttachPoint_string",
+                                "cdoDetachPoint": "cdoDetachPoint_string",
+                                "fxNearLegFields": "fxNearLegFields_string",
+                                "ccyPaying": "ccyPaying_string",
+                                "baseCcy": "baseCcy_string",
+                                "amountPaying": "optional_double",
+                                "ccyReceiving": "ccyReceiving_string",
+                                "amountReceiving": "optional_double",
+                                "timeBucket": "timeBucket_integer"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Commodity": {
+            "addon": "numeric_value",
+            "hedgingSets": [
+              {
+                "hedgingSet": {
+                  "addon": "numeric_value",
+                  "supervisoryCorel": "numeric_value",
+                  "commodityTypes": [
+                    {
+                      "commodity": {
+                        "addon": "numeric_value",
+                        "effectiveNotional": "numeric_value",
+                        "supervisoryFactor": "numeric_value",
+                        "tradeData": [
+                          {
+                            "id": {
+                              "exposureDetails": {
+                                "adjNotional": "numeric_value",
+                                "maturityFactor": "numeric_value",
+                                "supervDelta": "numeric_value",
+                                "effectiveNotional": "numeric_value"
+                              },
+                              "trades": {
+                                "id": "id_string",
+                                "tradeType": "instrument_string",
+                                "tradeGroup": "asset_class_string",
+                                "subClass": "subclass_string",
+                                "notional": "optional_double",
+                                "mTm": "optional_double",
+                                "currency": "currency_string",
+                                "Si": "optional_double",
+                                "Ei": "optional_double",
+                                "buySell": "buySell_string",
+                                "counterparty": "counterparty_string",
+                                "optionType": "optionType_string",
+                                "underlyingPrice": "optional_double",
+                                "strikePrice": "optional_double",
+                                "commodityType": "commodityType_string",
+                                "refEntity": "refEntity_string",
+                                "ccyPair": "ccyPair_string",
+                                "payLegType": "payLegType_string",
+                                "payLegRef": "payLegRef_string",
+                                "payLegTenor": "optional_double",
+                                "recLegType": "recLegType_string",
+                                "recLegRef": "recLegRef_string",
+                                "recLegTenor": "optional_double",
+                                "volStrike": "optional_double",
+                                "tradedPrice": "optional_double",
+                                "deliveryType": "deliveryType_string",
+                                "underlyingInstrument": "underlyingInstrument_string",
+                                "exoticType": "exoticType_string",
+                                "ISIN": "ISIN_string",
+                                "couponType": "couponType_string",
+                                "issuer": "issuer_string",
+                                "maturityDate": "optional_double",
+                                "paymentFrequency": "paymentFrequency_string",
+                                "creditRiskWeight": "creditRiskWeight_string",
+                                "cdoAttachPoint": "cdoAttachPoint_string",
+                                "cdoDetachPoint": "cdoDetachPoint_string",
+                                "fxNearLegFields": "fxNearLegFields_string",
+                                "ccyPaying": "ccyPaying_string",
+                                "baseCcy": "baseCcy_string",
+                                "amountPaying": "optional_double",
+                                "ccyReceiving": "ccyReceiving_string",
+                                "amountReceiving": "optional_double",
+                                "timeBucket": "timeBucket_integer"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Credit": {
+            "addon": "numeric_value",
+            "idiosynchratic_component": "numeric_value",
+            "systematic_component": "numeric_value",
+            "referenceEntities": [
+              {
+                "referenceEntity": {
+                  "addOn": "numeric_value",
+                  "supervisoryCorel": "numeric_value",
+                  "supervisoryFactor": "numeric_value",
+                  "tradeData": [
+                    {
+                      "id": {
+                        "exposureDetails": {
+                          "adjNotional": "numeric_value",
+                          "maturityFactor": "numeric_value",
+                          "supervDelta": "numeric_value",
+                          "effectiveNotional": "numeric_value"
+                        },
+                        "trades": {
+                          "id": "id_string",
+                          "tradeType": "instrument_string",
+                          "tradeGroup": "asset_class_string",
+                          "subClass": "subclass_string",
+                          "notional": "optional_double",
+                          "mTm": "optional_double",
+                          "currency": "currency_string",
+                          "Si": "optional_double",
+                          "Ei": "optional_double",
+                          "buySell": "buySell_string",
+                          "counterparty": "counterparty_string",
+                          "optionType": "optionType_string",
+                          "underlyingPrice": "optional_double",
+                          "strikePrice": "optional_double",
+                          "commodityType": "commodityType_string",
+                          "refEntity": "refEntity_string",
+                          "ccyPair": "ccyPair_string",
+                          "payLegType": "payLegType_string",
+                          "payLegRef": "payLegRef_string",
+                          "payLegTenor": "optional_double",
+                          "recLegType": "recLegType_string",
+                          "recLegRef": "recLegRef_string",
+                          "recLegTenor": "optional_double",
+                          "volStrike": "optional_double",
+                          "tradedPrice": "optional_double",
+                          "deliveryType": "deliveryType_string",
+                          "underlyingInstrument": "underlyingInstrument_string",
+                          "exoticType": "exoticType_string",
+                          "ISIN": "ISIN_string",
+                          "couponType": "couponType_string",
+                          "issuer": "issuer_string",
+                          "maturityDate": "optional_double",
+                          "paymentFrequency": "paymentFrequency_string",
+                          "creditRiskWeight": "creditRiskWeight_string",
+                          "cdoAttachPoint": "cdoAttachPoint_string",
+                          "cdoDetachPoint": "cdoDetachPoint_string",
+                          "fxNearLegFields": "fxNearLegFields_string",
+                          "ccyPaying": "ccyPaying_string",
+                          "baseCcy": "baseCcy_string",
+                          "amountPaying": "optional_double",
+                          "ccyReceiving": "ccyReceiving_string",
+                          "amountReceiving": "optional_double",
+                          "timeBucket": "timeBucket_integer"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "FX": {
+            "addon": "numeric_value",
+            "currencyPairs": [
+              {
+                "currencyPair": {
+                  "addOn": "numeric_value",
+                  "supervisoryFactor": "numeric_value",
+                  "tradeData": [
+                    {
+                      "id": {
+                        "exposureDetails": {
+                          "adjNotional": "numeric_value",
+                          "maturityFactor": "numeric_value",
+                          "supervDelta": "numeric_value",
+                          "effectiveNotional": "numeric_value"
+                        },
+                        "trades": {
+                          "id": "id_string",
+                          "tradeType": "instrument_string",
+                          "tradeGroup": "asset_class_string",
+                          "subClass": "subclass_string",
+                          "notional": "optional_double",
+                          "mTm": "optional_double",
+                          "currency": "currency_string",
+                          "Si": "optional_double",
+                          "Ei": "optional_double",
+                          "buySell": "buySell_string",
+                          "counterparty": "counterparty_string",
+                          "optionType": "optionType_string",
+                          "underlyingPrice": "optional_double",
+                          "strikePrice": "optional_double",
+                          "commodityType": "commodityType_string",
+                          "refEntity": "refEntity_string",
+                          "ccyPair": "ccyPair_string",
+                          "payLegType": "payLegType_string",
+                          "payLegRef": "payLegRef_string",
+                          "payLegTenor": "optional_double",
+                          "recLegType": "recLegType_string",
+                          "recLegRef": "recLegRef_string",
+                          "recLegTenor": "optional_double",
+                          "volStrike": "optional_double",
+                          "tradedPrice": "optional_double",
+                          "deliveryType": "deliveryType_string",
+                          "underlyingInstrument": "underlyingInstrument_string",
+                          "exoticType": "exoticType_string",
+                          "ISIN": "ISIN_string",
+                          "couponType": "couponType_string",
+                          "issuer": "issuer_string",
+                          "maturityDate": "optional_double",
+                          "paymentFrequency": "paymentFrequency_string",
+                          "creditRiskWeight": "creditRiskWeight_string",
+                          "cdoAttachPoint": "cdoAttachPoint_string",
+                          "cdoDetachPoint": "cdoDetachPoint_string",
+                          "fxNearLegFields": "fxNearLegFields_string",
+                          "ccyPaying": "ccyPaying_string",
+                          "baseCcy": "baseCcy_string",
+                          "amountPaying": "optional_double",
+                          "ccyReceiving": "ccyReceiving_string",
+                          "amountReceiving": "optional_double",
+                          "timeBucket": "timeBucket_integer"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Equity": {
+            "addon": "numeric_value",
+            "idiosynchratic_component": "numeric_value",
+            "systematic_component": "numeric_value",
+            "referenceEntities": [
+              {
+                "referenceEntity": {
+                  "addOn": "numeric_value",
+                  "supervisoryCorel": "numeric_value",
+                  "supervisoryFactor": "numeric_value",
+                  "tradeData": [
+                    {
+                      "id": {
+                        "exposureDetails": {
+                          "adjNotional": "numeric_value",
+                          "maturityFactor": "numeric_value",
+                          "supervDelta": "numeric_value",
+                          "effectiveNotional": "numeric_value"
+                        },
+                        "trades": {
+                          "id": "id_string",
+                          "tradeType": "instrument_string",
+                          "tradeGroup": "asset_class_string",
+                          "subClass": "subclass_string",
+                          "notional": "optional_double",
+                          "mTm": "optional_double",
+                          "currency": "currency_string",
+                          "Si": "optional_double",
+                          "Ei": "optional_double",
+                          "buySell": "buySell_string",
+                          "counterparty": "counterparty_string",
+                          "optionType": "optionType_string",
+                          "underlyingPrice": "optional_double",
+                          "strikePrice": "optional_double",
+                          "commodityType": "commodityType_string",
+                          "refEntity": "refEntity_string",
+                          "ccyPair": "ccyPair_string",
+                          "payLegType": "payLegType_string",
+                          "payLegRef": "payLegRef_string",
+                          "payLegTenor": "optional_double",
+                          "recLegType": "recLegType_string",
+                          "recLegRef": "recLegRef_string",
+                          "recLegTenor": "optional_double",
+                          "volStrike": "optional_double",
+                          "tradedPrice": "optional_double",
+                          "deliveryType": "deliveryType_string",
+                          "underlyingInstrument": "underlyingInstrument_string",
+                          "exoticType": "exoticType_string",
+                          "ISIN": "ISIN_string",
+                          "couponType": "couponType_string",
+                          "issuer": "issuer_string",
+                          "maturityDate": "optional_double",
+                          "paymentFrequency": "paymentFrequency_string",
+                          "creditRiskWeight": "creditRiskWeight_string",
+                          "cdoAttachPoint": "cdoAttachPoint_string",
+                          "cdoDetachPoint": "cdoDetachPoint_string",
+                          "fxNearLegFields": "fxNearLegFields_string",
+                          "ccyPaying": "ccyPaying_string",
+                          "baseCcy": "baseCcy_string",
+                          "amountPaying": "optional_double",
+                          "ccyReceiving": "ccyReceiving_string",
+                          "amountReceiving": "optional_double",
+                          "timeBucket": "timeBucket_integer"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "OtherExposure": {
+            "addon": "numeric_value",
+            "otherSubClasses": [
+              {
+                "otherSubClass": {
+                  "addOn": "numeric_value",
+                  "supervisoryFactor": "numeric_value",
+                  "tradeData": [
+                    {
+                      "id": {
+                        "exposureDetails": {
+                          "adjNotional": "numeric_value",
+                          "maturityFactor": "numeric_value",
+                          "supervDelta": "numeric_value",
+                          "effectiveNotional": "numeric_value"
+                        },
+                        "trades": {
+                          "id": "id_string",
+                          "tradeType": "instrument_string",
+                          "tradeGroup": "asset_class_string",
+                          "subClass": "subclass_string",
+                          "notional": "optional_double",
+                          "mTm": "optional_double",
+                          "currency": "currency_string",
+                          "Si": "optional_double",
+                          "Ei": "optional_double",
+                          "buySell": "buySell_string",
+                          "counterparty": "counterparty_string",
+                          "optionType": "optionType_string",
+                          "underlyingPrice": "optional_double",
+                          "strikePrice": "optional_double",
+                          "commodityType": "commodityType_string",
+                          "refEntity": "refEntity_string",
+                          "ccyPair": "ccyPair_string",
+                          "payLegType": "payLegType_string",
+                          "payLegRef": "payLegRef_string",
+                          "payLegTenor": "optional_double",
+                          "recLegType": "recLegType_string",
+                          "recLegRef": "recLegRef_string",
+                          "recLegTenor": "optional_double",
+                          "volStrike": "optional_double",
+                          "tradedPrice": "optional_double",
+                          "deliveryType": "deliveryType_string",
+                          "underlyingInstrument": "underlyingInstrument_string",
+                          "exoticType": "exoticType_string",
+                          "ISIN": "ISIN_string",
+                          "couponType": "couponType_string",
+                          "issuer": "issuer_string",
+                          "maturityDate": "optional_double",
+                          "paymentFrequency": "paymentFrequency_string",
+                          "creditRiskWeight": "creditRiskWeight_string",
+                          "cdoAttachPoint": "cdoAttachPoint_string",
+                          "cdoDetachPoint": "cdoDetachPoint_string",
+                          "fxNearLegFields": "fxNearLegFields_string",
+                          "ccyPaying": "ccyPaying_string",
+                          "baseCcy": "baseCcy_string",
+                          "amountPaying": "optional_double",
+                          "ccyReceiving": "ccyReceiving_string",
+                          "amountReceiving": "optional_double",
+                          "timeBucket": "timeBucket_integer"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
+
+

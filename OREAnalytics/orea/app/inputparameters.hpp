@@ -60,6 +60,38 @@ namespace ore {
 namespace analytics {
 using namespace ore::data;
 
+
+//_---------------------------------------------------
+/// Map for SACCRV - vannarho edit
+
+struct SaccrvSupervisoryFactor {
+    double supervisory_factor;
+    double correlation;
+    double supervisory_option_volatility;
+};
+
+struct SaccrvCollateral {
+    std::string id;
+    double amount;
+    std::string nettingsetId;
+    std::string type;
+
+    // Default constructor
+    SaccrvCollateral() : id(""), amount(0.0), nettingsetId(""), type("") {}
+
+    // Constructor with parameters
+    SaccrvCollateral(const std::string& id, double amount, const std::string& nettingsetId, const std::string& type)
+        : id(id), amount(amount), nettingsetId(nettingsetId), type(type) {}
+
+    // Getters
+    std::string getID() const { return id; }
+    double getAmount() const { return amount; }
+    std::string getNettingSetID() const { return nettingsetId; }
+    std::string getType() const { return type; }
+};
+
+//_---------------------------------------------------
+
 //! Base class for input data, also exposed via SWIG
 class InputParameters {
 public:
@@ -418,6 +450,22 @@ public:
     void setZeroToParShiftSensitivityScenarioData(const std::string& xml);
     void setZeroToParShiftSensitivityScenarioDataFromFile(const std::string& fileName);
 
+
+    // SACCRV  - vannarho edit
+    // - 5 setters from the XML and 1 for setSaccrvOutput to true - called from oreapp.cpp
+
+    void setSimplifiedSACCRV(bool b) { simplifiedSACCRV_ = b; }
+    void setOEMSACCRV(bool b) { OEMSACCRV_ = b; }
+    void setIgnoreMarginSACCRV(bool b) { ignoreMarginSACCRV_ = b; }
+    void setSaccrvOutputFile(const std::string& s) { saccrvOutputFile_ = s; }
+    void setSaccrvOutput(bool b) { saccrvOutput_ = b; }
+    void setSaccrvSupervisoryFactorsFromFile(const std::string& fileName);
+    void setSaccrvCollateralFromFile(const std::string& fileName);
+    void setSaccrvPortfolioFile(const std::string& s) { saccrvPortfolioFile_ = s; }
+    void setSaccrvCsaFile(const std::string& s) { saccrvCsaFile_ = s; }
+    
+    // SACCRV end 
+
     // Set list of analytics that shall be run
     void setAnalytics(const std::string& s); // parse to set<string>
     void insertAnalytic(const std::string& s); 
@@ -678,6 +726,20 @@ public:
     
     const QuantLib::Date& cashflowHorizon() const { return cashflowHorizon_; };
     const QuantLib::Date& portfolioFilterDate() const { return portfolioFilterDate_; }    
+
+    /**************************************************
+     * Getters for saccrv  - vannarho edit  
+     **************************************************/
+    bool simplifiedSACCRV() const { return simplifiedSACCRV_; }
+    bool OEMSACCRV() const { return OEMSACCRV_; }
+    bool ignoreMarginSACCRV() const { return ignoreMarginSACCRV_; }
+    std::string saccrvOutputFile() const { return saccrvOutputFile_; }
+    const std::map<std::string, std::map<std::string, SaccrvSupervisoryFactor>>& saccrvSupervisoryFactors() const {
+        return saccrvSupervisoryFactors_; }
+    std::vector<SaccrvCollateral> getSaccrvCollateral() const { return saccrvCollateral_; }
+    std::string saccrvPortfolioFile() const { return saccrvPortfolioFile_; }
+    std::string saccrvCsaFile() const { return saccrvCsaFile_; }
+
 
     /******************
      * Getters for SIMM
@@ -1006,6 +1068,24 @@ protected:
     QuantLib::ext::shared_ptr<ore::analytics::StressTestScenarioData> xvaStressScenarioData_;
     QuantLib::ext::shared_ptr<ore::analytics::SensitivityScenarioData> xvaStressSensitivityScenarioData_;
     bool xvaStressWriteCubes_ = false;
+
+
+
+    /**************
+     * SACCRV analytic
+     **************/
+    //  vannarho edit
+    bool simplifiedSACCRV_ = false;
+    bool OEMSACCRV_ = false;
+    bool ignoreMarginSACCRV_ = false;
+    std::string saccrvOutputFile_ = "";
+    bool saccrvOutput_ = false;
+    std::map<std::string, std::map<std::string, SaccrvSupervisoryFactor>> saccrvSupervisoryFactors_;
+    std::vector<SaccrvCollateral>  saccrvCollateral_;
+    std::string saccrvPortfolioFile_ = "";
+    std::string saccrvCsaFile_ = "";
+
+
     /***************
      * SIMM analytic
      ***************/
@@ -1120,6 +1200,12 @@ private:
     std::string parStressTestConversionFile_;
     std::string pnlExplainOutputFileName_;
     std::string zeroToParShiftFile_;
+    
+    ///--------------------------------------------------------------
+    // vannarho edit
+    std::string saccrvOutputFileName_;
+    ///--------------------------------------------------------------
+
 };
 
 } // namespace analytics

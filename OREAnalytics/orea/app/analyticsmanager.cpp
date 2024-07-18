@@ -34,6 +34,12 @@
 #include <orea/app/reportwriter.hpp>
 #include <orea/app/structuredanalyticserror.hpp>
 
+// SACCRV - vannarho edit
+#include <orea/app/analytics/saccrvanalytic.hpp>
+#include <orea/app/reportwriter.hpp>
+#include <orea/app/structuredanalyticserror.hpp>
+// SACCRV end 
+
 #include <ored/utilities/log.hpp>
 #include <ored/utilities/to_string.hpp>
 

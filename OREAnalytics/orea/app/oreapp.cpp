@@ -1924,6 +1924,74 @@ void OREAppInputParameters::loadParameters() {
     if (tmp != "")
         setPortfolioFilterDate(tmp);
 
+
+    // ------------------------------------------------------------
+    /**********************
+     * SACCRV  - vannarho edit
+     **********************/
+
+    tmp = params_->get("saccrv", "active", false);
+    if (!tmp.empty() && parseBool(tmp))
+        // inputs->insertAnalytic("SACCRV");  old way to do it
+        insertAnalytic("SACCRV");
+
+    tmp = params_->get("saccrv", "simplifiedSACCRV", false);
+    if (tmp != "")
+        // inputs->setSimplifiedSACCRV(parseBool(tmp));
+        setSimplifiedSACCRV(parseBool(tmp));
+
+    tmp = params_->get("saccrv", "OEMSACCRV", false);
+    if (tmp != "")
+        setOEMSACCRV(parseBool(tmp));
+
+    tmp = params_->get("saccrv", "ignoreMarginSACCRV", false);
+    if (tmp != "")
+        setIgnoreMarginSACCRV(parseBool(tmp));
+
+    tmp = params_->get("saccrv", "saccrvOutputFile", false);
+    if (tmp != "") {
+        setSaccrvOutputFile(tmp);
+        setSaccrvOutput(true);
+    }
+
+    tmp = params_->get("saccrv", "saccrvSupervisoryFactorsFile", false);
+    if (tmp != "") {
+        // string supervFile = inputPath + "/" + tmp;  
+        string supervFile = (inputPath / tmp).generic_string();
+        LOG("Load saccrvSupervisoryFactors from file " << tmp);
+        setSaccrvSupervisoryFactorsFromFile(supervFile);
+    }
+
+    tmp = params_->get("saccrv", "saccrvCollateralFile", false);
+    if (tmp != "") {
+        string collateralFile = (inputPath / tmp).generic_string();
+        LOG("Load saccrvCollateral from file " << tmp);
+        setSaccrvCollateralFromFile(collateralFile);
+    }
+
+    tmp = params_->get("saccrv", "saccrvPortfolioFile", false);
+    if (tmp != "") {
+        setSaccrvPortfolioFile(tmp);
+    }
+
+    tmp = params_->get("saccrv", "saccrvCsaFile", false);
+    if (tmp != "") {
+        setSaccrvCsaFile(tmp);
+    }
+
+
+    if (analytics().find("SACCRV") != analytics().end()) {
+        tmp = params_->get("saccrv", "saccrvCsaFile", false);
+        QL_REQUIRE(tmp != "", "Netting set manager is required for SACCRV");
+        string csaFile = (inputPath / tmp).generic_string();
+        LOG("Loading netting and csa data from file" << csaFile);
+        setNettingSetManagerFromFile(csaFile);
+    }
+
+
+   // ------------------------------------------------------------
+   // ------------------------------------------------------------
+
     /*************
      * ZERO TO PAR SENSI CONVERSION
      *************/

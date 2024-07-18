@@ -24,6 +24,9 @@ app/analytics/parstressconversionanalytic.cpp
 app/analytics/pnlanalytic.cpp
 app/analytics/pnlexplainanalytic.cpp
 app/analytics/pricinganalytic.cpp
+# // SACCRV  - vannarho edit
+app/analytics/saccrvanalytic.cpp
+# // SACCRV end 
 app/analytics/scenarioanalytic.cpp
 app/analytics/scenariostatisticsanalytic.cpp
 app/analytics/simmanalytic.cpp
@@ -93,6 +96,38 @@ engine/varcalculator.cpp
 engine/xvaenginecg.cpp
 engine/zerotoparcube.cpp
 engine/zerotoparshift.cpp
+
+# // SACCRV  - vannarho edit
+saccrv/saccrvcalculationmanager.cpp
+saccrv/saccrvpopulatemanagers.cpp
+saccrv/saccrvtradedatafactory.cpp
+saccrv/saccrvcsa.cpp
+saccrv/saccrvinputmanager.cpp
+
+saccrv/tradeparsers/swapparser.cpp
+saccrv/tradeparsers/swaptionparser.cpp
+saccrv/tradeparsers/utils.cpp
+
+saccrv/calculation/calcaddon.cpp
+saccrv/calculation/calcead.cpp
+saccrv/calculation/calcmf.cpp
+saccrv/calculation/calcpfe.cpp
+saccrv/calculation/calcrc.cpp
+saccrv/calculation/calculatefactormult.cpp
+saccrv/calculation/determineccrmethodology.cpp
+saccrv/calculation/groupcommtrades.cpp
+saccrv/calculation/groupcredittrades.cpp
+saccrv/calculation/groupequitytrades.cpp
+saccrv/calculation/groupfxtrades.cpp
+saccrv/calculation/groupirdtrades.cpp
+saccrv/calculation/groupothertrades.cpp
+saccrv/calculation/grouptrades.cpp
+saccrv/calculation/handlebasisvol.cpp
+saccrv/calculation/runsaccrvcalcs.cpp
+saccrv/calculation/singletradeaddon.cpp
+
+# // SACCRV end 
+
 scenario/clonedscenariogenerator.cpp
 scenario/clonescenariofactory.cpp
 scenario/crossassetmodelscenariogenerator.cpp
@@ -185,6 +220,9 @@ app/analytics/parstressconversionanalytic.hpp
 app/analytics/pnlanalytic.hpp
 app/analytics/pnlexplainanalytic.hpp
 app/analytics/pricinganalytic.hpp
+# // SACCRV  - vannarho edit
+app/analytics/saccrvanalytic.hpp
+# // SACCRV end 
 app/analytics/scenarioanalytic.hpp
 app/analytics/scenariostatisticsanalytic.hpp
 app/analytics/simmanalytic.hpp
@@ -264,6 +302,39 @@ engine/varcalculator.hpp
 engine/xvaenginecg.hpp
 engine/zerotoparcube.hpp
 engine/zerotoparshift.hpp
+
+# // SACCRV  - vannarho edit
+saccrv/saccrvpopulatemanagers.hpp
+saccrv/saccrvtradedatafactory.hpp
+saccrv/saccrtradecaster.hpp
+saccrv/saccrvinputmanager.hpp
+saccrv/saccrvcsa.hpp
+saccrv/saccrvcalculationmanager.hpp
+
+saccrv/tradeparsers/swapparser.hpp
+saccrv/tradeparsers/swaptionparser.hpp
+saccrv/tradeparsers/saccrvtradeparser.hpp
+saccrv/tradeparsers/utils.hpp
+
+saccrv/calculation/calcaddon.hpp
+saccrv/calculation/calcead.hpp
+saccrv/calculation/calcmf.hpp
+saccrv/calculation/calcpfe.hpp
+saccrv/calculation/calcrc.hpp
+saccrv/calculation/calculatefactormult.hpp
+saccrv/calculation/determineccrmethodology.hpp
+saccrv/calculation/groupcommtrades.hpp
+saccrv/calculation/groupcredittrades.hpp
+saccrv/calculation/groupequitytrades.hpp
+saccrv/calculation/groupfxtrades.hpp
+saccrv/calculation/groupirdtrades.hpp
+saccrv/calculation/groupothertrades.hpp
+saccrv/calculation/grouptrades.hpp
+saccrv/calculation/handlebasisvol.hpp
+saccrv/calculation/runsaccrvcalcs.hpp
+saccrv/calculation/singletradeaddon.hpp
+
+# // SACCRV end 
 scenario/aggregationscenariodata.hpp
 scenario/clonedscenariogenerator.hpp
 scenario/clonescenariofactory.hpp

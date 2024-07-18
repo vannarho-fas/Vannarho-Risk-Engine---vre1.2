@@ -2551,5 +2551,49 @@ void ReportWriter::writePnlReport(ore::data::Report& report,
     LOG("PnL report written.");
 }
 
+// saccrv vannarho edit
+void ReportWriter::writeSaccrvReport(ore::data::Report& report, 
+                                     const CounterpartyCreditRiskExposureTree& data) {
+    // Define the columns for the report
+    report.addColumn("CounterpartyId", string())
+        .addColumn("NettingSetId", string())
+        .addColumn("EAD", double(), 2)
+        .addColumn("PFE", double(), 2)
+        .addColumn("V_C", double(), 2)
+        .addColumn("RC", double(), 2)
+        .addColumn("V", double(), 2)
+        .addColumn("AddOn", double(), 2);
+
+    // Iterate over each counterparty
+    for (const auto& counterparty : data.counterparties) {
+        // Add a row for the total counterparty data
+        report.next()
+            .add(counterparty.counterpartyId)
+            .add("total")
+            .add(counterparty.ead)
+            .add(counterparty.pfe)
+            .add(counterparty.replacementCost.v_c)
+            .add(counterparty.replacementCost.rc)
+            .add(counterparty.replacementCost.v)
+            .add(counterparty.addOn);
+
+        // Iterate over each netting set for the current counterparty
+        for (const auto& nettingSet : counterparty.nettingSets) {
+            // Add a row for each netting set
+            report.next()
+                .add(counterparty.counterpartyId)
+                .add(nettingSet.id)
+                .add(nettingSet.ead)
+                .add(nettingSet.pfe)
+                .add(nettingSet.replacementCost.v_c)
+                .add(nettingSet.replacementCost.rc)
+                .add(nettingSet.replacementCost.v)
+                .add(nettingSet.addOn);
+        }
+    }
+
+    report.end();
+}
+
 } // namespace analytics
 } // namespace ore

@@ -22,6 +22,9 @@
 #include <ored/report/csvreport.hpp>
 #include <ored/utilities/log.hpp>
 
+// vannarho edit
+#include <orea/saccrv/saccrvcalculationmanager.hpp>
+
 using namespace std;
 using namespace ore::data;
 

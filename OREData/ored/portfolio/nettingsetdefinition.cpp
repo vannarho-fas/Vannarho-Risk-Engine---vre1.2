@@ -117,6 +117,9 @@ NettingSetDefinition::NettingSetDefinition(const NettingSetDetails& nettingSetDe
     DLOG(nettingSetDetails_ << ": uncollateralised NettingSetDefinition built.");
 }
 
+
+// vannarho edit - SACCRV - added 3 additional bool variables to end
+
 NettingSetDefinition::NettingSetDefinition(const NettingSetDetails& nettingSetDetails, const string& bilateral,
                                            const string& csaCurrency, const string& index, const Real& thresholdPay,
                                            const Real& thresholdRcv, const Real& mtaPay, const Real& mtaRcv,
@@ -125,18 +128,20 @@ NettingSetDefinition::NettingSetDefinition(const NettingSetDetails& nettingSetDe
                                            const Real& collatSpreadRcv, const vector<string>& eligCollatCcys,
                                            bool applyInitialMargin, const string& initialMarginType,
                                            const bool calculateIMAmount, const bool calculateVMAmount,
-                                           const string& nonExemptIMRegulations)
+                                           const string& nonExemptIMRegulations,
+                                           const bool hasIlliquidCollateralOrOTCNotEasilyReplaced, const bool applyMarginCallDisputes, const bool greaterThan5000TransactionsNotCentrallyCleared)
     : nettingSetDetails_(nettingSetDetails), activeCsaFlag_(true) {
 
-    csa_ = QuantLib::ext::make_shared<CSA>(
+    csa_ = boost::make_shared<CSA>(
         parseCsaType(bilateral), csaCurrency, index, thresholdPay, thresholdRcv, mtaPay, mtaRcv, iaHeld, iaType,
         parsePeriod(marginCallFreq), parsePeriod(marginPostFreq), parsePeriod(mpr), collatSpreadPay, collatSpreadRcv,
         eligCollatCcys, applyInitialMargin, parseCsaType(initialMarginType), calculateIMAmount, calculateVMAmount,
-        nonExemptIMRegulations);
+        nonExemptIMRegulations,hasIlliquidCollateralOrOTCNotEasilyReplaced, applyMarginCallDisputes, greaterThan5000TransactionsNotCentrallyCleared);
 
     validate();
     DLOG(nettingSetDetails_ << ": collateralised NettingSetDefinition built. ");
 }
+
 
 void NettingSetDefinition::fromXML(XMLNode* node) {
     XMLUtils::checkNode(node, "NettingSet");
@@ -208,12 +213,19 @@ void NettingSetDefinition::fromXML(XMLNode* node) {
 
         string nonExemptIMRegulations = XMLUtils::getChildValue(csaChild, "NonExemptIMRegulations", false);
 
-        csa_ = QuantLib::ext::make_shared<CSA>(parseCsaType(csaTypeStr), csaCurrency, index, thresholdPay, thresholdRcv, mtaPay,
+        // vannarho edit - SACCRV
+        bool hasIlliquidCollateralOrOTCNotEasilyReplaced = XMLUtils::getChildValueAsBool(csaChild, "HasIlliquidCollateralOrOTCNotEasilyReplaced", false, false);
+        bool applyMarginCallDisputes = XMLUtils::getChildValueAsBool(csaChild, "ApplyMarginCallDisputes", false, false);
+        bool greaterThan5000TransactionsNotCentrallyCleared = XMLUtils::getChildValueAsBool(csaChild, "GreaterThan5000TransactionsNotCentrallyCleared", false, false);
+
+        // vannarho edit - SACCRV - added 3 additional bool variables to end
+
+        csa_ = boost::make_shared<CSA>(parseCsaType(csaTypeStr), csaCurrency, index, thresholdPay, thresholdRcv, mtaPay,
                                        mtaRcv, iaHeld, iaType, parsePeriod(marginCallFreqStr),
                                        parsePeriod(marginPostFreqStr), parsePeriod(mprStr), collatSpreadPay,
                                        collatSpreadRcv, eligCollatCcys, applyInitialMargin,
                                        parseCsaType(initialMarginType), calculateIMAmount, calculateVMAmount,
-                                       nonExemptIMRegulations);
+                                       nonExemptIMRegulations,hasIlliquidCollateralOrOTCNotEasilyReplaced, applyMarginCallDisputes, greaterThan5000TransactionsNotCentrallyCleared);
     }
 
     validate();
@@ -266,6 +278,11 @@ XMLNode* NettingSetDefinition::toXML(XMLDocument& doc) const {
         XMLUtils::addChild(doc, csaSubNode, "CalculateIMAmount", csa_->calculateIMAmount());
         XMLUtils::addChild(doc, csaSubNode, "CalculateVMAmount", csa_->calculateVMAmount());
         XMLUtils::addChild(doc, csaSubNode, "NonExemptIMRegulations", csa_->nonExemptIMRegulations());
+        // vannarho edit - SACCRV - added 3 additional bool variables to end
+        XMLUtils::addChild(doc, csaSubNode, "HasIlliquidCollateralOrOTCNotEasilyReplaced", csa_->hasIlliquidCollateralOrOTCNotEasilyReplaced());
+        XMLUtils::addChild(doc, csaSubNode, "ApplyMarginCallDisputes", csa_->applyMarginCallDisputes());
+        XMLUtils::addChild(doc, csaSubNode, "GreaterThan5000TransactionsNotCentrallyCleared", csa_->greaterThan5000TransactionsNotCentrallyCleared());
+        // vannarho edit 
     }
 
     return node;
