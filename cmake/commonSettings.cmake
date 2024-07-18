@@ -211,7 +211,7 @@ get_filename_component(ORETEST_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/../ORETest"
 get_filename_component(RAPIDXML_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/../ThirdPartyLibs/rapidxml-1.13" ABSOLUTE)
 
 # parallel unit test runner
-option(ORE_ENABLE_PARALLEL_UNIT_TEST_RUNNER "Enable the parallel unit test runner" OFF)
+option(ORE_ENABLE_PARALLEL_UNIT_TEST_RUNNER "Enable the parallel unit test runner" ON)
 if (ORE_ENABLE_PARALLEL_UNIT_TEST_RUNNER)
     add_definitions(-DORE_ENABLE_PARALLEL_UNIT_TEST_RUNNER)
 endif()

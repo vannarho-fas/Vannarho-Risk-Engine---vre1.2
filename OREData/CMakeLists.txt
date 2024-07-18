@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
+add_compile_options(
+    -Wno-error=unused-variable
+    -Wno-error=unused-but-set-variable
+    -Wno-unused-private-field
+    -Wno-unused-but-set-variable
+)
 
 project(OREData CXX)
 
