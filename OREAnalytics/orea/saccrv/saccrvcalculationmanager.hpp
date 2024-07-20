@@ -1,3 +1,21 @@
+/*
+ Copyright (C) 2024 Vannarho Pty Ltd
+ All rights reserved.
+
+ This file is part of VRE, a free-software/open-source library
+ for transparent pricing and risk analysis
+
+ VRE is free software: you can redistribute it and/or modify it
+ under the terms of the Modified BSD License.  You should have received a
+ copy of the license along with this program.
+
+
+ This program is distributed on the basis that it will form a useful
+ contribution to risk analytics and model standardisation, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE. See the license for more details.
+*/
+
 /*! \file /OREAnalytics/orea/saccrv/saccrvcalculationmanager.hpp
     \brief SACCRV header declares the calculation manager class. This manager provides methods for populating and retrieving data efficiently. It defines a singleton class and the following structs: ExposureDetails, TradeData, TimeBucket, Currency, CommodityType, HedgingSet, ReferenceEntity, CurrencyPair, OtherSubClass, IRD, Commodity, Credit, FX, Equity, OtherExposure, AssetClasses, ReplacementCost, Counterparty, CounterpartyCreditRiskExposureTree, and SaccrvData.
     \ingroup saccrv
