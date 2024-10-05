@@ -1,6 +1,6 @@
 # VRE
 
-The Vannarho Risk Engine (VRE) is transparent peer-reviewed framework for pricing and risk
+The Vannarho Risk Engine (VRE) is framework for pricing and risk
 analysis that is an extensible foundation for tailored risk solutions
 
 VRE provides
