@@ -1,5 +1,6 @@
 /*
  Copyright (C) 2019 Quaternion Risk Management Ltd
+ Copyright (C) 2024 Growth Mindset Pty Ltd
  Copyright (C) 2020 Skandinaviska Enskilda Banken AB (publ)
  All rights reserved.
 

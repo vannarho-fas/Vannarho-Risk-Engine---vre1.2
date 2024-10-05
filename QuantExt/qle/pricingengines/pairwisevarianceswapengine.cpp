@@ -1,5 +1,6 @@
 /*
   Copyright (C) 2021 Quaternion Risk Management Ltd
+ Copyright (C) 2024 Growth Mindset Pty Ltd
   All rights reserved.
 
  This file is part of VRE, a free-software/open-source library

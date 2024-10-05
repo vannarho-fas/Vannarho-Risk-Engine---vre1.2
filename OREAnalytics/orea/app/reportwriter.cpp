@@ -1,5 +1,6 @@
 /*
  Copyright (C) 2017 Quaternion Risk Management Ltd
+ Copyright (C) 2024 Growth Mindset Pty Ltd
  Copyright (C) 2017 Aareal Bank AG
 
  All rights reserved.

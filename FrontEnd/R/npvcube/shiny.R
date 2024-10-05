@@ -1,6 +1,7 @@
 #! /usr/bin/env Rscript
 #
-# Copyright (C) 2016 Quaternion Risk Management Ltd.
+# Copyright (C) 2016 Quaternion Risk Management Ltd
+ Copyright (C) 2024 Growth Mindset Pty Ltd.
 # All rights reserved.
 #
 # don't forget to chmod +x
